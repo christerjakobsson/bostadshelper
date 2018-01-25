@@ -9,11 +9,11 @@ import { Values } from './values';
 })
 
 export class BostadsCalculationsComponent implements OnInit {
-  private values: Values;    
-  private lagfart: number = 0;
-  private pantbrev: number = 0;
-  private kontantinsats: number;
-  private summa: number;
+  values: Values;    
+  lagfart: number = 0;
+  pantbrev: number = 0;
+  kontantinsats: number;
+  summa: number;
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.values = new Values();    
@@ -55,5 +55,6 @@ export class BostadsCalculationsComponent implements OnInit {
 
   getInformationFromUrl(url: string) {
     //MAKE call to api with url, api will then scrape the site for the needed values.
+
   }
 }
