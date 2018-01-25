@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Values } from './values';
 
 @Component({
@@ -6,19 +7,25 @@ import { Values } from './values';
   templateUrl: './bostads-calculations.component.html',
   styleUrls: ['./bostads-calculations.component.css']
 })
-export class BostadsCalculationsComponent implements OnInit {
-  public values: Values;    
-  lagfart: number = 0;
-  pantbrev: number = 0;
-  kontantinsats: number;
-  summa: number;
 
-  constructor() {
-    this.values = new Values();
-    console.log(this.values);
+export class BostadsCalculationsComponent implements OnInit {
+  private values: Values;    
+  private lagfart: number = 0;
+  private pantbrev: number = 0;
+  private kontantinsats: number;
+  private summa: number;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.values = new Values();    
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if(!!params['url'] && params['url'] !== 'undefined') {
+        var url = params['url'];
+        this.getInformationFromUrl(url);
+      }      
+    });
   }
 
   onChange() {
@@ -44,5 +51,9 @@ export class BostadsCalculationsComponent implements OnInit {
     let loan = price * (1 - kontantInsatsPercent); // TODO make slider for kontantinsats 
     let pantbrev = loan - mortgages;
     return (pantbrev * 0.02) + 375;
+  }
+
+  getInformationFromUrl(url: string) {
+    //MAKE call to api with url, api will then scrape the site for the needed values.
   }
 }

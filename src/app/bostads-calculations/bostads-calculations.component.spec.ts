@@ -22,4 +22,9 @@ describe('BostadsCalculationsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('kontantinsats should be correct', () => {
+    expect(component.calculateKontantInsats("2000000", 0.15)).toBe(300000)
+  });
+
 });

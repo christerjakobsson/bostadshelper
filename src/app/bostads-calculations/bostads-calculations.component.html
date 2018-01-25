@@ -16,12 +16,19 @@
   <div class="form-inline">
     <label class="col-sm-2 col-form-label">Kontantinsats</label>
     <div class="col-sm-10">
-      <input class="form-control" type="number" max="100" min="0" name="kontantInsatsPercent" [(ngModel)]="values.kontantInsatsPercent" (change)="onChange()">
+      <input 
+        class="form-control" 
+        type="number" 
+        max="100" 
+        min="0" 
+        name="kontantInsatsPercent" 
+        [(ngModel)]="values.kontantInsatsPercent" 
+        (change)="onChange()">
     </div>
   </div>
 </form>
 
-<div class="col-md-8 fixed-bottom">
+<div class="col-md-8 results">
   <span>Kostnader:</span>
   <ul class="list-group">
     <li class="list-group-item">
